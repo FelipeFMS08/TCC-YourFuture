@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     max-width: 80%;
     margin: 0 auto;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .header {
@@ -34,7 +34,7 @@ body {
 
 #logo {
     max-width: 100%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .forms {
@@ -64,8 +64,6 @@ body {
     color: var(--text);
     background: var(--bg);
 }
-
-
 
 .field[type=text]:focus,
 .field[type=email]:focus,
@@ -108,6 +106,13 @@ body {
     color: var(--red-secondary);
     transform: translateY(-4.5vh);
     font-size: 1.125rem;
+}
+
+.show-password {
+    position: absolute;
+    cursor: pointer;
+    right: 4%;
+    color: var(--text);
 }
 
 @media screen and (max-width: 1024px) {

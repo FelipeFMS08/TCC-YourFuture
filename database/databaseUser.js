@@ -21,6 +21,10 @@ databaseUser.prototype.verifyEmailAndPassword = function (data, callback) {
 databaseUser.prototype.searchUser = function (id, callback) {
     this.userConnection.query('SELECT * FROM yourfuture_users where id = ?',  id,callback)
 }
+
+databaseUser.prototype.updateProfile = function (data, callback) {
+    this.userConnection.query('UPDATE yourfuture_users SET ? WHERE id = ?', [data, data.id], callback)
+}
 module.exports = function() {
     return databaseUser
 }

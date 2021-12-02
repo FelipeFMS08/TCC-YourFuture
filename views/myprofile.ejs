@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/main.css" >
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/settings.css">
     <title>Meu perfil</title>
 </head>
+
 <body>
     <main class="container">
         <div class="box">
@@ -15,37 +17,41 @@
                 <ul class="settings-menu">
                     <div class="top-menu">
                         <h4>Configurações</h4>
-                            <li id="settings-active" class="settings-item">
-                                <i  class="iconify-inline" data-icon="gg:profile" data-width="26"></i>
-                                Meu perfil
-                            </li>
-                            <li class="settings-item">
-                                <i class="iconify-inline" data-icon="fluent:clipboard-task-list-ltr-24-regular" data-width="26"></i>
-                                Testes Vocacionais
-                            </li>
+                        <li id="settings-active" class="settings-item">
+                            <i class="iconify-inline" data-icon="gg:profile" data-width="26"></i>
+                            Meu perfil
+                        </li>
+                        <li class="settings-item">
+                            <i class="iconify-inline" data-icon="fluent:clipboard-task-list-ltr-24-regular"
+                                data-width="26"></i>
+                            Testes Vocacionais
+                        </li>
                     </div>
                     <div class="bottom-menu">
-                        <li class="settings-item">
+                        <li class="settings-item" onclick="location.href = '/logout';">
                             <i span class="iconify" data-icon="fluent:door-arrow-left-16-regular" data-width="26"></i>
                             Sair
+
                         </li>
                     </div>
                 </ul>
             </div>
             <div class="right">
-                <form action="/updateProfile" class="forms" enctype="multipart/form-data"  method="POST">
+                <form action="/updateProfile" class="forms" enctype="multipart/form-data" method="POST">
                     <div class="left-forms">
                         <label class="first-name" for="first-name">Primeiro Nome</label>
-                        <input class="input-profile" type="text" id="first-name" name="first-name" value="<%= userInformations[0].firstname %>"/>
-                        <label class="last-name"  for="last-name">Sobrenome</label>
-                        <input class="input-profile" type="text" id="last-name" name="last-name" value="<%= userInformations[0].lastname %>"/>
+                        <input class="input-profile" type="text" id="first-name" name="firstname"
+                            value="<%= userInformations.firstname %>" />
+                        <label class="last-name" for="last-name">Sobrenome</label>
+                        <input class="input-profile" type="text" id="last-name" name="lastname"
+                            value="<%= userInformations.lastname %>" />
                     </div>
                     <div>
                         <div class="right-forms">
                             <div class="profile-img">
                                 <label class="label-profile">
-                                    <input type="file" name="profile"/>
-                                    <img id="profile" src="<%= userInformations[0].imageprofile %>" alt="" />
+                                    <input type="file" name="profile" value="<%= userInformations.imageprofile %>" />
+                                    <img id="profile" src="<%= userInformations.imageprofile %>" alt="" />
 
                                 </label>
                             </div>
@@ -56,17 +62,20 @@
                 <hr class="separator" />
                 <div class="email-profile">
                     <h4 class="profile-titles">Endereço de e-mail</h6>
-                    <p>Seu endereço de e-mail é <span style="float: right"><a href="#" style="color: var(--blue-primary);">Mudar</a></span></p>
-                    
+                        <p>Seu endereço de e-mail é <span style="float: right"><a href="#"
+                                    style="color: var(--blue-primary);">Mudar</a></span></p>
+
                 </div>
                 <hr class="separator" />
                 <div class="email-profile">
-                    <h4 class="profile-titles">Senha<span style="float: right; font-size: 1rem; "><a href="#" style="color: var(--blue-primary);">Mudar</a></span></h6>
+                    <h4 class="profile-titles">Senha<span style="float: right; font-size: 1rem; "><a href="#"
+                                style="color: var(--blue-primary);">Mudar</a></span></h6>
                 </div>
                 <hr class="separator" />
 
                 <div class="email-profile">
-                    <h4 class="profile-titles" style="float: right"><a href="#" style="color: var(--red-secondary);">Deletar minha conta</a></h4>
+                    <h4 class="profile-titles" style="float: right"><a href="#"
+                            style="color: var(--red-secondary);">Deletar minha conta</a></h4>
                     <p> Tenha certeza da decisão tomada.</p>
                 </div>
             </div>
@@ -75,10 +84,12 @@
     </main>
 
     <div class="change-theme-container change-theme-button">
-        <span class="iconify" data-icon="fluent:dark-theme-24-filled" data-width="22px" style=" color: var(--text); "></span>
+        <span class="iconify" data-icon="fluent:dark-theme-24-filled" data-width="22px"
+            style=" color: var(--text); "></span>
     </div>
 
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     <script type="text/javascript" src="theme-toggle.js"></script>
 </body>
+
 </html>

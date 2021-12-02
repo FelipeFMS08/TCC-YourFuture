@@ -28,14 +28,22 @@
                             <label class="field-name" for="email">Digite seu e-mail</label>
                             <input id="email" class="field" type="email" name="email" required />
 
-                            <label class="field-name" for="password">Digite sua senha</label>
-                            <input id="password" class="field" type="password" name="password" required />
-
-                            <label class="field-name">Digite sua senha novamente</label>
-                            <div>
-                                <input id="confirm_password" class="field" type="password" required />
-                                <span class="underline-animation"></span>
+                            <div class="password">
+                                <label class="field-name" for="password">Digite sua senha</label>
+                                <input id="password" class="field" type="password" name="password" required />
+                                <span class="show-password" onclick="togglePassword('password', 'eye-toggle1')"><i
+                                        class="iconify" id="eye-toggle1" data-icon="akar-icons:eye"></i></span>
                             </div>
+
+                            <div class="confirm-password">
+                                <label class="field-name">Digite sua senha novamente</label>
+                                <input id="confirm_password" class="field" type="password" required />
+                                <span class="show-password"
+                                    onclick="togglePassword('confirm_password', 'eye-toggle2')"><i class="iconify"
+                                        id="eye-toggle2" data-icon="akar-icons:eye"></i></span>
+                            </div>
+
+
                             <button class="button-submit" onclick="validate()" type="submit">Proxima Etapa</button>
                         </form>
                         <p id="no-account">Ja possui uma conta? <a class="access" href="/login">Acessar sua conta</a>
@@ -52,28 +60,7 @@
         </div>
     </main>
 
-    <script>
-        function validate() {
-            var password = document.getElementById('password');
-            var confirm = document.getElementById('confirm_password');
-            var email = document.getElementById('email');
-
-            if (password.value != confirm.value) {
-                confirm.setCustomValidity("Senhas diferentes!");
-                return;
-            }
-
-            const emailRegexp = new RegExp(
-                /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
-            )
-            if (emailRegexp.test(mailformat)) {
-                confirm.setCustomValidity("email incorreto!");
-                return;
-            }
-        }
-
-    </script>
-
+    <script src="utils-forms.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     <script type="text/javascript" src="theme-toggle.js"></script>
 </body>

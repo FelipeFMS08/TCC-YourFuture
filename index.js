@@ -3,7 +3,7 @@ const app = express();
 const consign = require('consign');
 consign().include('database').into(app)
 const session = require('express-session');
-const multer= require('multer');
+const multer = require('multer');
 
 var questionsFunction = require('./questions.js');
 var academico = require('./utils/academico-arrays/academico.js')
@@ -21,52 +21,63 @@ app.use(session({
 }));
 
 const storage = multer.diskStorage({
-    destination: function(req,file,cb){
+    destination: function (req, file, cb) {
         cb(null, 'public/assets/uploads/')
     },
-    filename:(req,file,cb) => {
-		cb(null, file.originalname);
-	}
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
 });
 
 
-const upload =multer({ storage });
+const upload = multer({ storage });
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     let sess = req.session
 
     if (sess.logado == 1) {
-        res.render('index.ejs', {'logado': sess.logado});
+        res.render('index.ejs', { 'logado': sess.logado });
     } else {
         res.render('index.ejs');
     }
 
 });
 
-app.get('/academico', function(req, res) {
+app.get('/academico', function (req, res) {
     res.render('academico.ejs', { 'vestibulares': academico.vestibulares, 'phrases': academico.frases });
 })
 
-app.get('/myprofile', function(req, res) {
+app.get('/myprofile', function (req, res) {
     let session = req.session
+
+    if (session.logado != 1) {
+        res.render('cadastro-login/login.ejs')
+        return;
+    } 
     let connection = app.database.connection()
     let databaseUser = new app.database.databaseUser(connection)
-    databaseUser.searchUser(session.idUser, function(error, sucess) {
+    databaseUser.searchUser(session.idUser, function (error, sucess) {
         var userInformations = sucess
         console.log(userInformations)
 
-        res.render('myprofile.ejs', {'userInformations': userInformations});
+        res.render('myprofile.ejs', { 'userInformations': userInformations[0] });
     })
-    
 
-    
+
+
 })
 
-app.get('/carreira', function(req, res) {
-    res.render('carreira.ejs', { 'carreiras': carreira.carreiras, 'phrases': carreira.frases});
+app.get('/carreira', function (req, res) {
+    res.render('carreira.ejs', { 'carreiras': carreira.carreiras, 'phrases': carreira.frases });
 })
 
-app.get('/result', function(req, res) {
+app.get('/result', function (req, res) {
+    let session = req.session
+
+    if (session.logado != 1) {
+        res.render('cadastro-login/login.ejs')
+        return;
+    } 
     res.render('resulttest.ejs');
 
 });
@@ -79,8 +90,8 @@ app.post('/academico-saiba-mais/:id', function (req, res) {
         }
     });
 
-    res.render('saibamais.ejs', {'more': array})
-   
+    res.render('saibamais.ejs', { 'more': array })
+
 });
 
 app.post('/carreira-saiba-mais/:id', function (req, res) {
@@ -91,19 +102,31 @@ app.post('/carreira-saiba-mais/:id', function (req, res) {
         }
     });
 
-    res.render('saibamais.ejs', {'more': array})
-   
+    res.render('saibamais.ejs', { 'more': array })
+
 });
 
-app.get('/register', function(req, res) {
+app.get('/register', function (req, res) {
+    let session = req.session
+
+    if (session.logado == 1) {
+        res.redirect('/')
+        return;
+    } 
     res.render('cadastro-login/register.ejs');
 });
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
+    let session = req.session
+
+    if (session.logado == 1) {
+        res.redirect('/')
+        return;
+    } 
     res.render('cadastro-login/login.ejs');
 });
 
-app.post('/form', function(req, res) {
+app.post('/form', function (req, res) {
 
     const dados = req.body;
     let pergunta = dados.pergunta;
@@ -112,9 +135,9 @@ app.post('/form', function(req, res) {
 
     if (pergunta == (questionsFunction.questions.length - 1)) {
         var resultadosCont = questionsFunction.contarRespostas(questionsFunction.respostas);
-        res.render('resulttest.ejs', {'results': resultadosCont});
+        res.render('resulttest.ejs', { 'results': resultadosCont });
     } else {
-        pergunta++; 
+        pergunta++;
         res.render('teste-forms.ejs', { 'questions': questionsFunction.questions, 'pergunta': pergunta });
     }
 })
@@ -127,7 +150,7 @@ let registerData = {
     imageprofile: ''
 };
 
-app.post('/register', function(req, res) {
+app.post('/register', function (req, res) {
     var data = req.body;
     registerData = {
         email: data.email,
@@ -151,12 +174,12 @@ app.post('/complete-register', upload.single('profile'), (req, res) => {
         password: registerData.password,
         firstname: data.firstname,
         lastname: data.lastname,
-        imageprofile: '/assets/img/academico/Vetor-Woman-Run.png'
+        imageprofile: '/assets/uploads/profile-default.png'
     };
 
     console.log(registerData)
 
-    databaseUser.searchAll(function(error, result) {
+    databaseUser.searchAll(function (error, result) {
         if (!error) {
             if (!result.filter(x => x.email == data.email).length > 0) {
                 databaseUser.createUser(registerData, (error) => {
@@ -173,57 +196,84 @@ app.post('/complete-register', upload.single('profile'), (req, res) => {
 })
 
 
-app.post('/logged',function(req,res){
+app.post('/logged', function (req, res) {
     var sess = req.session;
     var data = req.body;
     var connection = app.database.connection();
     var databaseUser = new app.database.databaseUser(connection);
-    databaseUser.verifyEmail(data,function(error,success){
-      if(success.length){
-          databaseUser.verifyEmailAndPassword(data, function(error, sucess) {
-            if (sucess.length) {
-                sess.logado = 1;
-                sess.idUser = sucess[0].id;
-                res.redirect('/');
-               
-            } else {
-                var erroPassword = "Senha incorreta.";
-                res.render('login.ejs',{'erroPassword':erroPassword});
-            }
-          })
-      }else{
-        var erroEmail = "O email que você inseriu não está conectado a uma conta.";
-        res.render('login.ejs',{'erroEmail':erroEmail});
-      }
+    databaseUser.verifyEmail(data, function (error, success) {
+        if (success.length) {
+            databaseUser.verifyEmailAndPassword(data, function (error, sucess) {
+                if (sucess.length) {
+                    sess.logado = 1;
+                    sess.idUser = sucess[0].id;
+                    sess.userInfos = sucess
+                    res.redirect('/');
+
+                } else {
+                    var erroPassword = "Senha incorreta.";
+                    res.render('login.ejs', { 'erroPassword': erroPassword });
+                }
+            })
+        } else {
+            var erroEmail = "O email que você inseriu não está conectado a uma conta.";
+            res.render('login.ejs', { 'erroEmail': erroEmail });
+        }
     });
-  });
+});
 
 
-app.get('/teste', function(req, res) {
+app.get('/teste', function (req, res) {
+    let session = req.session
+
+    if (session.logado == 1) {
+        res.redirect('/')
+        return;
+    } 
     questionsFunction.respostas = [];
 
     res.render('teste-forms.ejs', { 'questions': questionsFunction.questions, 'pergunta': 0 });
 })
 
-app.get('/logout',function(req,res){
+app.get('/logout', function (req, res) {
     var sess = req.session;
-    sess.logado=0;
+    sess.logado = 0;
     sess.destroy();
     res.redirect('/');
-  });
+});
 
-  app.post('/updateProfile', upload.single('profile'), function(req,res){
+app.post('/updateProfile', upload.single('profile'), function (req, res) {
     const data = req.body;
-    var file = req.file.originalname;
-    file = 'assets/uploads/'+file;
-    const datas =[{
-        data: data,
-        profileImage: file
-    }];
+    
+    if (req.file != null) {
+        var file = req.file.originalname;
+        file = '/assets/uploads/' + file;
+    } else {
+        var file = req.session.userInfos[0].imageprofile
+    }
    
+    var updateProfile = {
+        id: req.session.idUser,
+        email: req.session.userInfos[0].email,
+        password: req.session.userInfos[0].password,
+        firstname: data.firstname,
+        lastname: data.lastname,
+        imageprofile: file
+    }
 
 
-  });
+    var connection = app.database.connection();
+    var databaseUser = new app.database.databaseUser(connection);
+
+    databaseUser.updateProfile(updateProfile, function(error, sucess) {
+        if (error) {
+            console.log(error)
+        }
+    })
+
+    res.render('myprofile.ejs', {'userInformations': updateProfile})
+
+});
 
 app.listen(3000, () => {
     console.log("YourFuture -> Online");
