@@ -1,0 +1,144 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: 1300px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--bg-card);
+}
+
+.left {
+    flex: 1;
+    padding: 30px 50px;
+    
+}
+
+.profile-img {
+    align-self: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--text);
+}
+
+.profile-img > img {
+    width: 100%;
+    align-self: center;
+}
+
+.settings-menu {
+    height: calc(100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    column-gap: 1vw;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+.settings-item:hover {
+   background-color: rgba(0, 0, 0, 0.06);
+}
+
+
+#settings-active {
+    background-color: var(--blue-primary);
+    color: var(--white);
+}
+
+.forms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    
+}
+
+.left-forms {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-forms {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    flex-direction: column;
+}
+.first-name{
+    color: var(--text);
+}
+
+.last-name{
+    color: var(--text);
+}
+
+.input-profile{
+    border: none;
+    width: 100%;
+    border-bottom: 3px solid #c7c7c7;
+    padding: 0.625rem 0 0.625rem 0;
+    margin-bottom: 5vh;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--bg);
+    background-color: var(--bg-card);
+}
+
+.top-menu h4 {
+    margin-bottom: 3vh;
+}
+
+.input-profile[type=text]:focus {
+    outline: none;
+    transition: 0.1s;
+    border-bottom: 5px solid var(--blue-primary);
+}
+
+.separator {
+    margin: 30px 0;
+    border: 1px solid var(--text);
+    opacity: 0.2;
+}
+
+.profile-titles {
+    font-size: 1.25rem;
+}
+
+.email-profile {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.email-profile > p {
+    font-size: 1rem;
+}
+
+.right {
+    flex: 3;
+    flex-direction: column;
+    padding-right: 100px;
+    padding: 50px 100px 50px 0;
+}
+
+.profile-img input[type=file]{
+    display: none;
+}
+

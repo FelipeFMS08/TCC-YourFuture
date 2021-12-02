@@ -1,0 +1,143 @@
+
+.container {
+    max-width: 1000px;
+    transform: translateY(-6vh);
+    display: flex;
+    flex-direction: column;
+    margin: 34px auto;
+    gap: 40px;
+}
+
+.header>h1 {
+    font-size: 3.125rem;
+    text-align: center;
+}
+
+.header>h4 {
+    font-weight: 700;
+}
+
+.questions form {
+    display: grid;
+    row-gap: 30px;
+}
+
+.test-answer {
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1.2rem;
+    padding: 30px 10px;
+}
+
+input[type="radio"] {
+    appearance: none;
+}
+
+.test-answer:nth-child(1) {
+    background-color: #FFF281;
+}
+
+.test-answer:nth-child(2) {
+    background-color: #A7FF71;
+}
+
+.test-answer:nth-child(3) {
+    background-color: #A4C3FF;
+}
+
+.test-answer:nth-child(4) {
+    background-color: #C1A4FF;
+}
+
+.test-answer:nth-child(5) {
+    background-color: #FF9393;
+}
+
+#options .selected {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.test-answer.selected #check-button{
+   visibility: visible;
+  
+}
+.test-answer div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#check-button{
+    visibility: hidden;
+    position: fixed;
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress {
+    background-color: #C4c4c4;
+    width: 350px;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.progress-value {
+    background-color: var(--blue-primary);
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.test-button {
+    padding: 15px 40px;
+    font-size: 1.875rem;
+    color: var(--white);
+    font-weight: bold;
+    animation: load;
+}
+
+
+
+@media screen and (max-width: 1500px) {
+    .test-answer {
+        padding: 22px 10px;
+    }
+    .container {
+        gap: 10px;
+    }
+    .questions form {
+        row-gap: 20px;
+    }
+
+    .test-button {
+        padding: 10px 40px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .container {
+        margin: 0 50px;
+    }
+}
+
+@media screen and (max-width: 665px) {
+    .progress {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .footer {
+        row-gap: 20px;
+        flex-direction: column;
+    }
+}

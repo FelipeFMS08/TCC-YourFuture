@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/teste.css" />
+</head>
+
+<body>
+    <header class="c-header">
+        <div class="logo">
+            <img id="logo" src="assets/img/Logo.png" alt="" onclick="location.href = '/';" />
+        </div>
+    </header>
+    <main class="container">
+        <div class="header">
+            <h1 id="question"></h1>
+            <h4>
+                <%= questions[pergunta].question %>
+            </h4>
+        </div>
+
+        <div class="questions">
+            <form id="options" action="/form" method="POST">
+                <label class="test-answer">
+                    <input c type="radio" required name="resposta" value="A" />
+                     <%= questions[pergunta].A %> 
+                     <div>
+                        <span id="check-button" class="iconify" data-icon="akar-icons:circle-check" style="color: white;"></span>
+                    </div>
+                </label>
+
+                <label class="test-answer">
+                    <input   type="radio" required name="resposta" value="B" />
+                    <%= questions[pergunta].B %>
+                    <div>
+                        <span id="check-button" class="iconify" data-icon="akar-icons:circle-check" style="color: white;"></span>
+                    </div>
+                </label class="test-answer">
+
+                <label class="test-answer">
+                    <input  type="radio" required name="resposta" value="C" />
+                    <%= questions[pergunta].C %>
+                    <div>
+                        <span id="check-button" class="iconify" data-icon="akar-icons:circle-check" style="color: white;"></span>
+                    </div>
+                   
+
+                </label>
+
+                <label class="test-answer">
+                    <input  type="radio" required name="resposta" value="D" />
+                    <%= questions[pergunta].D %>
+                    <div>
+                        <span id="check-button" class="iconify" data-icon="akar-icons:circle-check" style="color: white;"></span>
+                    </div>
+                </label>
+
+                <label class="test-answer">
+                    <input   type="radio" required name="resposta" value="E" />
+                    <%= questions[pergunta].E %>
+                    <div>
+                        <span id="check-button" class="iconify" data-icon="akar-icons:circle-check" style="color: white;"></span>
+                    </div>
+                </label>
+
+                <div class="footer">
+                    <div class="progress">
+                        <div class="progress-value" id="progress-bar"></div>
+                    </div>
+                    <button id="last-button" class="test-button" type="submit" name="pergunta" value="<%= pergunta %>">Próxima</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <div class="change-theme-container change-theme-button">
+        <span class="iconify" data-icon="fluent:dark-theme-24-filled" data-width="22px" style=" color: var(--text); "></span>
+    </div>
+
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="theme-toggle.js"></script>
+
+    <script>
+        var progressbar = document.getElementById('progress-bar')
+        var question = document.getElementById('question')
+        var pergunta = "<%= pergunta %>";
+
+        window.addEventListener('load', (event) => {
+
+            if (pergunta == 0) {
+                progressbar.style.width = "10%"
+                progressbar.style.backgroundColor = "#FFF281"
+                question.innerHTML = "Questão 1"
+            }
+            if (pergunta == 1) {
+                progressbar.style.width = "20%"
+                progressbar.style.backgroundColor = "#FFF281"
+                question.innerHTML = "Questão 2"
+            }
+            if (pergunta == 2) {
+                progressbar.style.width = "30%"
+                progressbar.style.backgroundColor = "#A7FF71"
+                question.innerHTML = "Questão 3"
+            }
+            if (pergunta == 3) {
+                progressbar.style.width = "40%"
+                progressbar.style.backgroundColor = "#A7FF71"
+                question.innerHTML = "Questão 4"
+            }
+            if (pergunta == 4) {
+                progressbar.style.width = "50%"
+                progressbar.style.backgroundColor = "#A4C3FF"
+                question.innerHTML = "Questão 5"
+            }
+            if (pergunta == 5) {
+                progressbar.style.width = "60%"
+                progressbar.style.backgroundColor = "#A4C3FF"
+                question.innerHTML = "Questão 6"
+            }
+            if (pergunta == 6) {
+                progressbar.style.width = "70%"
+                progressbar.style.backgroundColor = "#C1A4FF"
+                question.innerHTML = "Questão 7"
+            }
+            if (pergunta == 7) {
+                progressbar.style.width = "80%"
+                progressbar.style.backgroundColor = "#C1A4FF"
+                question.innerHTML = "Questão 8"
+            }
+            if (pergunta == 8) {
+                progressbar.style.width = "90%"
+                progressbar.style.backgroundColor = "#FF9393"
+                question.innerHTML = "Questão 9"
+            }
+            if (pergunta == 9) {
+                progressbar.style.width = "100%"
+                progressbar.style.backgroundColor = "#FF9393"
+                question.innerHTML = "Questão 10"
+            }
+        });
+        $('.questions').on('click', '.test-answer', '#check-button', function() {
+            $(this).addClass('selected').siblings().removeClass('selected');
+        })
+    </script>
+</body>
+
+</html>

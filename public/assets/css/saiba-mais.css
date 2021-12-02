@@ -1,0 +1,38 @@
+.background-know-more {
+  background-size: 100vw 500px;
+  background-repeat: no-repeat;
+}
+
+.main-content {
+  width: 100%;
+  
+  
+  display: flex;
+  
+  justify-content: center;
+}
+
+.article {
+  border-radius: 10px;
+  padding: 70px 100px;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  width: 1300px;
+  background-color: var(--bg-card);
+  min-height: 500px;
+}
+
+.article > h1 {
+  font-weight: 700;
+}
+
+.title-article {
+  font-weight: 700;
+  margin: 5vh 0;
+}
+
+.article > hr {
+  margin-top: 3vh;
+  border: 1px solid #c7c7c7;
+}

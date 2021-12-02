@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root {
+    --bg: white;
+    --bg-dark: #151515;
+    --bg-card: white;
+    --bg-card-dark: #252525;
+    --text: #313131;
+    --text-dark: var(--white);
+    --blue-primary: #4B87FF;
+    --red-secondary: #F55858;
+    --white: #F5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: var(--bg);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+h1 {
+    color: var(--text);
+    font-size: 3.75rem;
+    font-weight: 900;
+}
+
+h3 {
+    font-size: 2.188rem;
+    font-weight: 900;
+    color: var(--blue-primary);
+}
+
+h4 {
+    margin-top: 2vh;
+    color: var(--text);
+    font-size: 1.875rem;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+li {
+    font-size: 1.5rem;
+    color: var(--text);
+    font-weight: bold;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+ul #active {
+    color: var(--blue-primary);
+}
+
+button {
+    background-color: var(--blue-primary);
+    color: var(--white);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logo {
+    cursor: pointer;
+    max-width: 200px;
+    min-width: 140px;
+}
+
+.c-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg);
+    padding: 0 70px;
+    height: 10vh;
+}
+
+.menu {
+    display: flex;
+    list-style-type: none;
+    overflow: hidden;
+    align-items: center;
+}
+
+.menu-items {
+    padding: 0 30px;
+}
+
+.menu-button {
+    width: 160px;
+    font-size: 1.5rem;
+}
+
+#menu-bar {
+    display: none;
+}
+
+.transition {
+    transition: 0.5s;
+}
+
+.change-theme-container {
+    background: var(--blue-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 55px;
+    border-radius: 5px;
+    position: fixed;
+    cursor: pointer;
+    right: 50px;
+    bottom: 3vh;
+}
+
+@media screen and (max-width: 1420px) {
+    h1 {
+        font-size: 2.813rem;
+    }
+    h3 {
+        font-size: 1.875rem;
+    }
+    p {
+        font-size: 1.25rem;
+    }
+    li {
+        font-size: 1.25rem;
+    }
+    .menu-button {
+        font-size: 1.25rem;
+    }
+    .logo {
+        max-width: 144px;
+        min-width: 80px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #menu-bar {
+        display: flex;
+    }
+    .iconify {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: .2s;
+    }
+    #btnCloseBurger {
+        display: none;
+        margin-left: 10px;
+    }
+    #btnBurger,
+    #btnCloseBurger {
+        transition: .4s;
+        border: none;
+        background: none;
+        width: 40px;
+    }
+    .iconify:hover {
+        color: red;
+    }
+    a:hover {
+        background-color: red;
+    }
+    .menu a {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 2px solid rgba(0, 0, 0, .05);
+    }
+    .menu {
+        display: block;
+        position: absolute;
+        top: 75px;
+        right: 10px;
+        width: 0;
+        transition: .4s;
+        visibility: hidden;
+        overflow: hidden;
+    }
+    .nav-bar.active .menu {
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        width: 30%;
+        height: auto;
+        padding: 1.5rem 0;
+        border-radius: 10px;
+        background-color: var(--blue-primary);
+    }
+    .nav-bar.active .menu-items {
+        color: var(--white);
+    }
+    .nav-bar.active #active {
+        color: var(--text);
+    }
+    .nav-bar.active .menu-button {
+        background-color: var(--bg);
+        color: var(--text);
+    }
+    .nav-bar.active #btnBurger {
+        transition: .4s;
+        display: none;
+    }
+    .nav-bar.active #btnCloseBurger {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    h1 {
+        font-size: 2.188rem;
+    }
+    h3 {
+        font-size: 1.563rem;
+    }
+}

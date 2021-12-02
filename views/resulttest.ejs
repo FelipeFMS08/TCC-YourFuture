@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/result.css" />
+    <title>Página de Resultados</title>
+</head>
+
+<body>
+    <header class="c-header">
+        <div class="logo">
+            <img id="logo" src="/assets/img/Logo.png" alt="" />
+        </div>
+
+        <nav id="nav" class="nav-bar">
+
+            <div id="menu-bar" class="menu-items">
+                <button id="btnBurger"> <span class="iconify" data-icon="fa:bars" style="color: #4b87ff;"
+                        data-width="40" data-height="40"> </span> </button>
+                <button id="btnCloseBurger"> <span class="iconify" data-icon="mdi:close" style="color: red;"
+                        data-width="40" data-height="40"></span></button>
+            </div>
+
+            <ul class="menu">
+                <li class="menu-items" onclick="location.href = '/';">Início</li>
+                <li class="menu-items" onclick="location.href = '/academico';">Acadêmico</li>
+                <li class="menu-items" onclick="location.href = '/carreira';">Carreira</li>
+                <li id="active" class="menu-items" onclick="location.href = '/teste';">Teste Vocacional</li>
+                <li class="menu-items"><button onclick="location.href = '/register';"
+                        class="menu-button">Entrar</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+            <% for (var i=0; i < results.length; i++) { %>
+                <div class="box">
+                    <div class="box-items">
+                        <div class="image-item">
+                            <img src="<%= results[i].img%>" alt="">
+                        </div>
+                        <div class="content-item">
+                            <h4>
+                                <%= results[i].title %> - <%= Math.floor((results[i].value / 10) * 100);%>%
+                            </h4>
+                            <p>
+                                <%= results[i].description %>
+                            </p>
+                            <button class="more-button">Conheça os cursos</button>
+                        </div>
+
+                    </div>
+                </div>
+                <% } %>
+    </div>
+    <div class="change-theme-container change-theme-button">
+        <span class="iconify" data-icon="fluent:dark-theme-24-filled" data-width="22px"
+            style=" color: var(--text); "></span>
+    </div>
+
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script type="text/javascript" src="burguerdrop.js"></script>
+    <script type="text/javascript" src="theme-toggle.js"></script>
+</body>
+
+</html>

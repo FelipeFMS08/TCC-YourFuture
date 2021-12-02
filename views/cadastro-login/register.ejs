@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/register_login.css" />
+</head>
+
+<body>
+    <main>
+        <div class="container">
+
+            <div class="container left">
+
+            </div>
+
+            <div class="container right">
+
+                <div class="container container-forms">
+                    <section class="header">
+                        <img class="logo" id="logo" src="assets/img/Logo.png" alt="" onclick="location.href = '/';" />
+                    </section>
+                    <section class="forms">
+                        <h4>Crie sua conta</h4>
+                        <form method="POST" action="/register">
+                            <label class="field-name" for="email">Digite seu e-mail</label>
+                            <input id="email" class="field" type="email" name="email" required />
+
+                            <label class="field-name" for="password">Digite sua senha</label>
+                            <input id="password" class="field" type="password" name="password" required />
+
+                            <label class="field-name">Digite sua senha novamente</label>
+                            <div>
+                                <input id="confirm_password" class="field" type="password" required />
+                                <span class="underline-animation"></span>
+                            </div>
+                            <button class="button-submit" onclick="validate()" type="submit">Proxima Etapa</button>
+                        </form>
+                        <p id="no-account">Ja possui uma conta? <a class="access" href="/login">Acessar sua conta</a>
+                        </p>
+                    </section>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="change-theme-container change-theme-button">
+            <span class="iconify" data-icon="fluent:dark-theme-24-filled" data-width="22px"
+                style=" color: var(--text); "></span>
+        </div>
+    </main>
+
+    <script>
+        function validate() {
+            var password = document.getElementById('password');
+            var confirm = document.getElementById('confirm_password');
+            var email = document.getElementById('email');
+
+            if (password.value != confirm.value) {
+                confirm.setCustomValidity("Senhas diferentes!");
+                return;
+            }
+
+            const emailRegexp = new RegExp(
+                /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
+            )
+            if (emailRegexp.test(mailformat)) {
+                confirm.setCustomValidity("email incorreto!");
+                return;
+            }
+        }
+
+    </script>
+
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script type="text/javascript" src="theme-toggle.js"></script>
+</body>
+
+</html>

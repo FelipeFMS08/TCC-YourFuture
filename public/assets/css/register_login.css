@@ -1,0 +1,133 @@
+body {
+    background-image: url('../img/Mountains.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left {
+    flex: 3;
+}
+
+.right {
+    flex: 1.5;
+    background-color: var(--bg);
+    flex-direction: column;
+}
+
+.container-forms {
+    flex-direction: column;
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.header {
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+}
+
+#logo {
+    max-width: 100%;
+    margin: auto;
+}
+
+.forms {
+    margin-bottom: 10vh;
+    font-size: 1.375rem;
+}
+
+.forms>h4 {
+    margin-bottom: 30px;
+}
+
+.field-name {
+    margin-top: 3vh;
+    color: var(--text);
+}
+
+
+.field[type=text],
+.field[type=email],
+.field[type=password] {
+    border: none;
+    width: 100%;
+    border-bottom: 3px solid #c7c7c7;
+    padding: 0.625rem 0 0.625rem 0;
+    margin-bottom: 5vh;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--bg);
+}
+
+
+
+.field[type=text]:focus,
+.field[type=email]:focus,
+.field[type=password]:focus {
+    outline: none;
+    transition: 0.1s;
+    border-bottom: 4px solid var(--blue-primary);
+}
+
+.button-submit {
+    margin-top: 5vh;
+    font-size: 1.875rem;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.button-create-account {
+    margin-top: 3vh;
+    font-size: 1.875rem;
+    padding: 15px 0;
+    width: 100%;
+    color: var(--blue-primary);
+    background-color: var(--bg);
+}
+
+.button-create-account:hover {
+    transition: 1s;
+    background: rgba(75, 135, 255, 0.2);
+}
+
+.forms a {
+    color: var(--red-secondary);
+}
+
+#no-account {
+    margin-top: 6vh;
+}
+
+.form-error {
+    color: var(--red-secondary);
+    transform: translateY(-4.5vh);
+    font-size: 1.125rem;
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        background-image: none;
+    }
+    .container {
+        justify-content: center;
+    }
+    .container-forms {
+        height: auto;
+        width: 65vw;
+    }
+    .field {
+        width: 100vh;
+    }
+    .left {
+        display: none;
+    }
+    #logo {
+        margin-top: 5vh;
+    }
+}

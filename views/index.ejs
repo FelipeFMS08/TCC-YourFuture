@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>YourFuture - Página Inicial</title>
+</head>
+
+<body>
+    <header class="c-header">
+        <div class="logo">
+            <img id="logo" src="assets/img/Logo.png" alt="" onclick="location.href = '/';" />
+        </div>
+
+        <nav id="nav" class="nav-bar">
+            <div id="menu-bar" class="menu-items">
+                <div id="btnBurger"><span class="iconify" data-icon="fa:bars" style="color: #4b87ff;" data-width="40" data-height="40"> </span> </div>
+                <div id="btnCloseBurger"><span class="iconify" data-icon="mdi:close" style="color: red;" data-width="40" data-height="40"></span></div>
+            </div>
+
+            <ul class="menu">
+                <li id="active" class="menu-items">Início</li>
+                <li class="menu-items" onclick="location.href = '/academico';">Acadêmico</li>
+                <li class="menu-items" onclick="location.href = '/carreira';">Carreira</li>
+                <li class="menu-items" onclick="location.href = '/teste';">Teste Vocacional</li>
+                <% if (locals.logado) { %>
+                    <a href="/logout"> Logado </a>
+
+                    <% } else { %>
+                <li class="menu-items"><button onclick="location.href = '/register';" class="menu-button">Entrar</button></li>
+                    <% } %>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="container left">
+            <div class="left-container">
+                <div class="left-title">
+                    <h1>ESTÁ CONFUSO COM</h1>
+                    <h3>O SEU FUTURO?</h3>
+                </div>
+                <p>A YourFuture tem o intuito de auxiliar você a <br />encontrar sua nova profissão ou graduação.<br /> Você irá perder essa chance? Um futuro <br />brilhante está a um click de você.</p>
+                <button class="left-button">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="container right">
+            <img src="assets/img/Vetor-Woman-Run.png" alt="" />
+        </div>
+
+    </main>
+
+    <div class="change-theme-container change-theme-button">
+        <span class="iconify" data-icon="fluent:dark-theme-24-filled" data-width="22px" style=" color: var(--text); "></span>
+    </div>
+
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js "></script>
+    <script type="text/javascript " src="burguerdrop.js "></script>
+    <script type="text/javascript " src="theme-toggle.js "></script>
+
+</body>
+
+</html>
